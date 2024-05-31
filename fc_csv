@@ -1,0 +1,12 @@
+var adm2 = ee.FeatureCollection("projects/ee-oishirahi9865/assets/BGD_adm3");
+
+var ctg = adm2.filter(ee.Filter.eq("NAME_2","Chittagong"))
+print(ctg)
+
+Export.table.toDrive({
+  collection: ctg,
+  description: "Assignment_14_ctg_csv",
+  fileFormat: "CSV",
+  folder: "assignment_14",
+  selectors: ["NAME_1","NAME_2","NAME_3"]
+})
